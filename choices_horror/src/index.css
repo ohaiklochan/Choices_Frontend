@@ -1,0 +1,14 @@
+body {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  margin-left: 100px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 100px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

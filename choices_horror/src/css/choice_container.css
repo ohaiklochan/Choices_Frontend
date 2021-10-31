@@ -1,0 +1,15 @@
+.choiceA {
+    height: 18vh;
+    width: 29vw;
+    float: left;
+    top: 16vw;
+    position: relative;
+}
+.choiceB {
+    height: 18vh;
+    width: 29vw;
+    float: right;
+    top: 16vw;
+    position: relative;
+}
+  
