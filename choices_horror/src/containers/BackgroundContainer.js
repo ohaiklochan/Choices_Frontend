@@ -1,28 +1,43 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import '../css/question_container.css'
+import Choice from '../components/Choice'
+import UserInfo from '../components/UserInfo'
+import Prompt from '../components/Prompt'
+import Ending from '../components/Ending'
 
-class BackgroundContainer extends Component {
-    state = {
-        string:[],
-        change: false
-    }
+// class BackgroundContainer extends Component {
+//     state = {
+//         string:[],
+//         change: false
+//     }
 
-    componentDidUpdate(prevProps) {
+//     componentDidUpdate(prevProps) {
+//         if (this.props.prompt !== prevProps.prompt) {
+//             const info = document.querySelector(".info")
+//             if (info !== null) {
+//                 info.innerHTML = `<p className="font"> ${this.props.prompt} </p>`
+//             }
+//         }
+//     }
+
+//     screenChange = () => {
+//         this.setState({
+//             change: true
+//         })
+//     }
+function BackgroundContainer() {
+    const [ choice, prompt ] = useState(0);
+    useEffect((prevProps) => {
         if (this.props.prompt !== prevProps.prompt) {
             const info = document.querySelector(".info")
-            if (info !== null) {
-                info.innerHTML = `<p className="font"> ${this.props.prompt} </p>`
+                if (info !== null) {
+                    info.innerHTML = `<p className="font"> ${this.props.prompt} </p>`
+                }
             }
-        }
-    }
-
-    screenChange = () => {
-        this.setState({
-            change: true
         })
-    }
 
-    render() {
+
+    
         const question = this.props.prompt
         return (
             <div className='backgroundContainer'>
@@ -34,22 +49,22 @@ class BackgroundContainer extends Component {
                     {this.props.choiceA !== null ? <div className='choiceA'><button onClick={(event) => {
                         this.props.changePath(this.props, this.props.choiceA);
                         this.check(event)
-                    }}><p>{this.props.choiceA}</p></button>}
+                    }}>{this.props.choiceA}</button>{}
                 </div> :
                 <div className='choiceC'>
                     <button onClick={this.screenChange}>
-                        <p>{this.props.choiceC}</p>
+                        {this.props.choiceC}
                     </button>
                 </div>}
                 {this.props.choiceB !== null ? <div className='choiceB'>
                     <button onClick={() =>{this.props.changePath(this.props, this.props.choiceB)}}>
-                        <p>{this.props.choiceB}</p>
+                        {this.props.choiceB}
                     </button>
                 </div> : null}
             </div>}
         </div>
 
         )
-                }}
+                }
 
 export default BackgroundContainer

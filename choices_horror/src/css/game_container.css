@@ -12,13 +12,18 @@ header {
 
 p {
     text-align: center;
-    font-size: 36px;
-    font-family: mySecondFont;
+    font-size: 16px;
+    font-family: myThirdFont;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3 {
     font-size: 78px;
     font-family: myFirstFont;
+}
+
+h4, h5 {
+    font-size: 36px;
+    font-family: mySecondFont;
 }
 
 @font-face {
@@ -29,6 +34,11 @@ h1, h2, h3, h4, h5 {
 @font-face {
     font-family: mySecondFont;
     src: url('../fonts/deathrattlebb_reg.ttf');
+}
+
+@font-face {
+    font-family: myThirdFont;
+    src: url('../fonts/Dark\ &\ Black\ D.otf');
 }
 
 body {

@@ -1,88 +1,146 @@
-import React, { Component }  from 'react'
+import React, { Component, useState, useEffect }  from 'react'
 import GameContainer from './GameContainer'
 import Instructions from './Instructions'
 import StartButton from '../components/StartButton'
 import TurnButton from '../components/TurnButton'
-import Choice from '../components/Choice'
-import UserInfo from '../components/UserInfo'
-import Prompt from '../components/Prompt'
-import Ending from '../components/Ending'
 import MainPage from './MainPage'
+import BackgroundContainer from './BackgroundContainer'
 
-const gameURL = "http://localhost:3000/game"
-const promptURL = "https://choices-api.herokuapp.com/games"
+const APIurl = "https://choices-api.herokuapp.com/games"
 
-export class MainPrompt extends Component {
+function MainPrompt() {
+    const [ choice, prompt ] = useState(0);
 
-    state = {
-        startGame: false,
-        openInstructions: false,
-        prompt: "Are you ready?",
-        choiceA: "No",
-        choiceB: "Yes",
-        turn: 1,
-        ending: "none",
-        choices: []
-    }
-
-    goBackHandler = () => {
-        this.setState({
-            openInstructions: false
+    useEffect(() => {
+        fetch(APIurl)
+        .then((res) => res.json())
+        .then((data) => {
+            prompt(data.results)
         })
-    }
-
-    componentDidMount() {
-        fetch(promptURL)
-            .then(res => res.json())
-            .then(games => this.setState({
-                games: games.choice
-            }))
-        }
+    })
 
 
-    componentDidUpdate(prevProps) {
-        if (this.props.prompt !== prevProps.prompt) {
-            const info = document.querySelector('.info')
-            if (info !== null) {
-                info.innerHTML = `<p className="font"> ${this.props.prompt} </p>`
-            }
-        }
-    }
+    
 
-    goToScreen = () => {
-        this.setState({
-            gameStarted: true
-        })
-    }
-  
-    changePath =(choices, choice) => {
-        if(choices.choiceA == choice){
-            const options = this.state.choices.filter(choice => choice.turn == this.state.turn)
-            const filteredOptions = options.filter(choice => choice.route == this.state.route)
-            const reFilteredOptions = filteredOptions.filter(choice => choice.from == this.state.prompt)
-            const newPath = reFilteredOptions.find(choice => choice.path == "left")
-            const newerPath = reFilteredOptions.filter(choice => choice.path == "left")
-            const choice = this.state.choices[0].path
-            if(this.state.route == "none"){
+    // state = {
+    //     startGame: false,
+    //     openInstructions: false,
+    //     prompt: "Are you ready?",
+    //     choiceA: "I am not ready",
+    //     choiceB: "Let's go!",
+    //     choiceC: "",
+    //     turn: 1,
+    //     ending: "none",
+    //     choices: []
+    // }
+
+    // componentDidMount() {
+    //     fetch(`https://choices-api.herokuapp.com/games`)
+    //     .then(res => res.json())
+    //     .then(choices => this.setState({
+    //         choices: choices.choice
+    //     }))
+    // }
+
+    // componentDidUpdate(prevState) {
+    //     if(this.state.turn == 0) {
+    //         this.setState({
+    //             turn: null
+    //         })
+    //     }
+    // }
+
+    // goToScreen = () => {
+    //     this.setState({
+    //         startGame: true
+    //     })
+    // }
+
+    // changePath = (choices, choice) => {
+    //     if(choices.choiceA == choice) {
+    //         const options = this.state.choices.filter(choice => choice.turn == this.state.turn)
+    //         const filteredOptions = options.filter(choice => choice.route == this.state.route)
+    //         const otherOptions = filteredOptions.filter(choice => choice.from == this.state.prompt)
+    //         const newPath = otherOptions.find(choice => choice.path == "left")
+    //         const updatedPath = otherOptions.filter(choice => choice.path == "left")
+    //         const choice = this.state.choices[0].path
+    //         if(this.state.route == "none") {
+    //             this.setState({
+    //                 prompt: newPath.prompt,
+    //                 choiceA: newPath.choiceA,
+    //                 choiceB: newPath.choiceB,
+    //                 turn: this.state.turn + 1,
+    //                 path: "left"
+    //             })
+    //         }
+
+    //         if(this.state.route !== "none") {
+    //             if(newPath.choiceB == "Let's go!") {
+    //                 const continuePath = updatedPath.find(choice => choice.userpath == "b")
+    //                 this.setState({
+    //                     prompt: continuePath.prompt,
+    //                     choiceA: continuePath.choiceA,
+    //                     choiceB: continuePath.choiceB,
+    //                     turn: this.state.turn + 1,
+    //                 })
+    //             }
+    //             else {
+    //                 const continuePath = updatedPath.find(choice => choice.userpath == "a")
+    //                 this.setState({
+    //                     prompt: continuePath.prompt,
+    //                     choiceA: continuePath.choiceA,
+    //                     choiceB: continuePath.choiceB,
+    //                     turn: this.state.turn + 1,
+    //                 })
+    //             }
+    //         }
+
+    //         if(this.state.choiceA == "Notice the flashing lights of the floor" || this.state.prompt == "Your work day has ended. You wait for the elevator. You see Cassandra, a girl that works with you on the 32nd floor of your building. You both are the last two done for the night. You talk about how hard the work day was and that the boss isn’t giving you any breaks. She agrees with you as you both enter the elevator.") {
+    //             const continuePath = updatedPath.find(choice => choice.userpath == "a")
+    //             this.setState({
+    //                 prompt: continuePath.prompt,
+    //                 choiceA: continuePath.choiceA,
+    //                 choiceB: continuePath.choiceB,
+    //                 turn: this.state.turn + 1,
+    //                 path: "left",
+    //             })
+    //         }
             
-            this.setState({
-                prompt: newPath.prompt,
-                choiceA: newPath.choiceA,
-                choiceB:newPath.choiceB,
-                turn: this.state.turn + 1,
-                route: "a"
-            })}
-        }
-    }
+    //         else {
+    //             if(this.state.choiceB == "Notice the unnerving quiet of the floor" || this.state.prompt == "Your work day has ended. You wait for the elevator. You see Cassandra, a girl that works with you on the 32nd floor of your building. You both are the last two done for the night. You talk about how hard the work day was and that the boss isn’t giving you any breaks. She agrees with you as you both enter the elevator.") {
+    //                 const continuePath = updatedPath.find(choice => choice.userpath == "b")
+    //                 this.setState({
+    //                     prompt: continuePath.prompt,
+    //                     choiceA: continuePath.choiceA,
+    //                     choiceB: continuePath.choiceB,
+    //                     turn: this.state.turn + 1,
+    //                     route: "right",
+    //                 })
 
-    render() {
-        const question = this.props.prompt
-        return (
+    //             }
+    //         }
+    //     }
+    // }
+
+    // render() {
+        
+        return prompt.length > 0 ? (
             <div className='mainPrompt'>
-                {question}
+                <div className='prompt'>
+                    <h3> {prompt[1].choice} </h3>
+                </div>
+                <button className='choiceA'>
+                    {choice[1].choiceA}
+                </button>
+                <button className='choiceB'>
+                    {choice[1].choiceB}
+                </button>
             </div>
+        ) : (
+            <h1>Now Loading....</h1>
         )
-    }
 }
+        
 
 export default MainPrompt
+
