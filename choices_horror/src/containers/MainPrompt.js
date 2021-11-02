@@ -6,16 +6,16 @@ import TurnButton from '../components/TurnButton'
 import MainPage from './MainPage'
 import BackgroundContainer from './BackgroundContainer'
 
-const APIurl = "https://choices-api.herokuapp.com/games"
+const APIurl = "http://choices-api.herokuapp.com/api/v1/games"
 
 function MainPrompt() {
-    const [ choice, prompt ] = useState(0);
+    const [ prompts, game ] = useState(0);
 
     useEffect(() => {
         fetch(APIurl)
         .then((res) => res.json())
         .then((data) => {
-            prompt(data.results)
+            console.log(data.game)
         })
     })
 
@@ -127,13 +127,13 @@ function MainPrompt() {
         return prompt.length > 0 ? (
             <div className='mainPrompt'>
                 <div className='prompt'>
-                    <h3> {prompt[1].choice} </h3>
+                    <h3> prompt goes here </h3>
                 </div>
                 <button className='choiceA'>
-                    {choice[1].choiceA}
+                    choice A
                 </button>
                 <button className='choiceB'>
-                    {choice[1].choiceB}
+                    choice B
                 </button>
             </div>
         ) : (
