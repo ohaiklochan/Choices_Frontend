@@ -3,7 +3,6 @@ import '../css/game_container.css';
 import MainPrompt from './MainPrompt';
 import Instructions from './Instructions';
 import BackgroundContainer from './BackgroundContainer';
-import TurnButton from '../components/TurnButton';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import MainPage from './MainPage';
 

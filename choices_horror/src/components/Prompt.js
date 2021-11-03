@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
-class Prompt extends Component {
-    render() {
-        return (
-            <div>
-                <p>{this.props.prompt}</p>
+function Prompt() {
+    const [ currentPrompt, setCurrentPrompt ] = useState(0)
+    return (
+        <div className='mainPrompt'>
+            <div className='prompt'>
+                <h3 className='initial-prompt'> {Prompt[currentPrompt]} </h3>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default Prompt
