@@ -1,11 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-function Choice() {
+function Choice(props) {
+
+    const [ currentChoice, setNextChoice ] = useState(0);
+    const [ from, setFrom ] = useState(0);
+
+    function handleChoiceRouting(ending) {
+        setNextChoice(ending.currentChoice)
+    }
+
+    useEffect(() => {
+        
+    })
 
     return (
-        <div className='choices'>
-            <button> {Prompt[currentPrompt].choiceA} </button>
-            <button> {Prompt[currentPrompt].choiceB} </button>
+        <div className='choice-select'>
+            <div className='choiceA-selection'>
+                <button onClick={() => setNextChoice(currentChoice + 1)}>{currentChoice.choiceA}</button>
+            </div>
+            <div className='choiceB-selection'>
+                <button onClick={() => setNextChoice(currentChoice + 1)}>{currentChoice.choiceB}</button>
+            </div>
         </div>
     )
 }
