@@ -19,7 +19,7 @@ function Choice(props) {
                 <button onClick={() => setNextChoice(currentChoice + 1)}>{currentChoice.choiceA}</button>
             </div>
             <div className='choiceB-selection'>
-                <button onClick={() => setNextChoice(currentChoice + 1)}>{currentChoice.choiceB}</button>
+                <button onClick={() => setNextChoice(currentChoice + 2)}>{currentChoice.choiceB}</button>
             </div>
         </div>
     )

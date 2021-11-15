@@ -23,7 +23,7 @@ function MainPrompt(props) {
     const handleAnswer = (choiceAnswer) => {
         const nextId = currentId + 1;
         setCurrentId(nextId);
-        if (nextId < choice.length) {
+        if (nextId < choiceAnswer.choiceA) {
             setPath(nextId.left)
         } else {
             setPath(nextId.right)
@@ -37,10 +37,10 @@ function MainPrompt(props) {
                 <h3>{id[currentId].prompt}</h3>
             </div>
             <div className='choiceA'>
-                <button onClick={() => handleAnswer()}>{id[currentId].choiceA}</button>
+                <button onClick={(choiceAnswer) => handleAnswer(choiceAnswer)}>{id[currentId].choiceA}</button>
             </div>
             <div className='choiceB'>
-                <button onClick={() => handleAnswer()}>{id[currentId].choiceB}</button>
+                <button onClick={(choiceAnswer) => handleAnswer(choiceAnswer)}>{id[currentId].choiceB}</button>
             </div>
         </div>
     ) : (
