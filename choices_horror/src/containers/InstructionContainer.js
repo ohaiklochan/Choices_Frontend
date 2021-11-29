@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import '../css/game_container.css'
-import '../components/Instructions'
 
 class InstructionContainer extends Component {
 
