@@ -1,28 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, { Component } from 'react'
+import { render } from 'react-dom'
+import { connect } from 'react-redux'
+import { choiceAChosen, choiceBChosen } from '../actions/choiceAction'
 
-function Choice(props) {
+class Choice extends Component {
+    render() {
 
-    const [ currentChoice, setNextChoice ] = useState(0);
-    const [ from, setFrom ] = useState(0);
-
-    function handleChoiceRouting(ending) {
-        setNextChoice(ending.currentChoice)
+        return (
+            <div className='choice-select'>
+                <div className='choiceA-selection'>
+                    <button>{this.props.choiceA}</button>
+                </div>
+                <div className='choiceB-selection'>
+                    <button>{this.props.choiceB}</button>
+                </div>
+            </div>
+        )
     }
-
-    useEffect(() => {
-        
-    })
-
-    return (
-        <div className='choice-select'>
-            <div className='choiceA-selection'>
-                <button onClick={() => setNextChoice(currentChoice + 1)}>{currentChoice.choiceA}</button>
-            </div>
-            <div className='choiceB-selection'>
-                <button onClick={() => setNextChoice(currentChoice + 2)}>{currentChoice.choiceB}</button>
-            </div>
-        </div>
-    )
 }
 
-export default Choice
+const mapStateToProps = state => {
+    return {
+        choice: state.choice
+    }
+}
+
+const mapDispatchToProps = {
+    choiceA: choiceAChosen,
+    choiceB: choiceBChosen
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Choice)

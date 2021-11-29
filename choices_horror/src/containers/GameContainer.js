@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import '../css/game_container.css';
-import MainPrompt from './MainPrompt';
-import Instructions from './Instructions';
-import BackgroundContainer from './BackgroundContainer';
+import MainPrompt from './PromptContainer';
+import Instructions from './InstructionContainer';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import MainPage from './MainPage';
+import MainPage from './WelcomeContainer';
 
 export class GameContainer extends Component {
 
