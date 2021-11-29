@@ -7,7 +7,7 @@ class PromptContainer extends Component {
         <div className='main-prompt'>
             <div className='current-prompt'>
             <h3>{this.props.prompt}</h3>
-            propmt stuff
+            <button>{this.props.choiceA}</button><button>{this.props.choiceB}</button>
             </div>
         </div>
     )}
@@ -15,7 +15,9 @@ class PromptContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        prompt: state.prompt
+        prompt: state.prompt,
+        choiceA: state.choiceA,
+        choiceB: state.choiceB
     }
 }
 

@@ -7,6 +7,6 @@ export function startGame() {
         })
         fetch(api)
         .then(res => res.json())
-        .then(game => dispatch({type: 'LOAD_PROMPT', game}))
+        .then(prompt => dispatch({type: 'LOAD_PROMPT', prompt}))
     }
 }
