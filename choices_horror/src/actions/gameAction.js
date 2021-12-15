@@ -1,12 +1,16 @@
 const api = "http://choices-api.herokuapp.com/api/v1/games"
 
-export function startGame() {
+export function loadPrompts() {
     return(dispatch) => {
-        dispatch({
-            type: 'START_LOADING_GAME'
-        })
         fetch(api)
         .then(res => res.json())
-        .then(prompt => dispatch({type: 'LOAD_PROMPT', prompt}))
+        .then(res => dispatch({type: 'LOAD_PROMPT', game: res}))
+    }
+}
+
+export function showPrompt(prompt) {
+    return {
+        type: "SHOW_PROMPT",
+        payload: prompt
     }
 }
