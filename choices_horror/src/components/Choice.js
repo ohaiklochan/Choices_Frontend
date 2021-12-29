@@ -26,15 +26,15 @@ class Choice extends Component {
         return (
             <div className='choice-select'>
                 <div className='choiceA-selection'>
-                    <button value={this.state.choiceA} onChange={this.handleChoiceSelection}>
-                        {choiceA.map((choiceA) => (
-                    <option value={choiceA.value}>{choiceA.label}</option>))}
+                    <button value={this.state.choice} onChange={this.handleChoiceSelection}>
+                        {/* {choice.map((choice) => (
+                    <option value={choice.value}>{choice.label}</option>))} */}
                     </button>
                 </div>
                 <div className='choiceB-selection'>
-                <button value={this.state.choiceB} onChange={this.handleChoiceSelection}>
-                        {choiceB.map((choiceB) => (
-                    <option value={choiceB.value}>{choiceB.label}</option>))}
+                <button value={this.state.choice} onChange={this.handleChoiceSelection}>
+                        {/* {choice.map((choice) => (
+                    <option value={choice.value}>{choice.label}</option>))} */}
                     </button>
                 </div>
             </div>
