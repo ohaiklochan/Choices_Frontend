@@ -4,15 +4,14 @@ export function fetchChoices() {
     return(dispatch) => {
         fetch(api)
         .then(res => res.json())
-        .then(res => dispatch({type: 'LOAD_CHOICES', choices: res}))
+        .then(res => dispatch({type: 'LOAD_CHOICES', game: res}))
     }
 }
-export function showChoices(choiceA, choiceB) {
+export function showChoices(choices) {
     return {
         type: "SHOW_CHOICES",
         payload: {
-            choiceA,
-            choiceB
+            choices
         }
     }
 }
