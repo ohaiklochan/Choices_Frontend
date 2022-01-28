@@ -1,5 +1,4 @@
 .game {
-    background: rgba(161, 0, 0);
     padding: 20px;
     border-radius: 5px;
 }
@@ -8,22 +7,26 @@
 header {
     font-size: 78px;
     font-family: myFirstFont;
+    color: snow;
 }
 
 p {
     text-align: center;
     font-size: 16px;
     font-family: myThirdFont;
+    color: snow;
 }
 
 h1, h2 {
     font-size: 78px;
     font-family: myFirstFont;
+    color: snow;
 }
 
 h3, h4, h5 {
     font-size: 36px;
     font-family: mySecondFont;
+    color: snow;
 }
 
 @font-face {
@@ -46,6 +49,6 @@ body {
     background-color: black;
 }
 
-.title {
-    background-color: rgb(161, 0, 0);
+div.App {
+    background-image: url('../images/grunge_wallpaper_recolor_by_zombiejamboree_d2fbziu-fullview.jpg');
 }

@@ -16,16 +16,16 @@ export function showChoices(choices) {
     }
 }
 
-export function choiceAChosen(routeRight) {
-    return {
-        type: "CHOICE_A_CHOSEN",
-        payload: routeRight
-    }
-}
+// export function choiceAChosen(routeRight) {
+//     return {
+//         type: "CHOICE_A_CHOSEN",
+//         payload: routeRight
+//     }
+// }
 
-export function choiceBChosen(routeLeft) {
-    return {
-        type: "CHOICE_B_CHOSEN",
-        payload: routeLeft
-    }
-}
+// export function choiceBChosen(routeLeft) {
+//     return {
+//         type: "CHOICE_B_CHOSEN",
+//         payload: routeLeft
+//     }
+// }

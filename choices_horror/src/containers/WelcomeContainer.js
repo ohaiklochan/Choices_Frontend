@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class WelcomeContainer extends Component {
-    render() {
-        return (
-            <><div class="header">
+const WelcomeContainer = () => {
+    return (
+        <div>
+            
+            <div class="header">
                 <h1 class="title">Choices: A React Horror Game</h1>
             </div>
             <div class="body">
@@ -12,9 +13,9 @@ class WelcomeContainer extends Component {
             <div class="footer">
                 <button type="button" class="btn btn-primary" onClick={() => window.location = '/maingame'} className='start'>Yes</button>
                 <button type="button" class="btn btn-secondary" onClick={() => window.location = '/instructions'} className='start'>No</button>
-            </div></>
-        )
-    }
+            </div>
+        </div>
+    )
 }
 
 export default WelcomeContainer

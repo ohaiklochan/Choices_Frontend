@@ -1,45 +1,31 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { showChoices, choiceAChosen, choiceBChosen } from '../actions/choiceAction'
+import { fetchChoices, showChoices } from '../actions/choiceAction'
 
-class Choice extends Component {
+function Choice(props) {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            choiceA: this.props.choiceA,
-            choiceB: this.props.choiceB
-        }
+    const [ currentChoice, setNextChoice ] = useState(0);
+    const [ from, setFrom ] = useState(0);
+
+    function handleChoiceRouting(ending) {
+        setNextChoice(ending.currentChoice)
     }
 
-    componentDidMount() {
-        console.log("component did mount choices")
-        this.props.showChoices()
-    }
+    useEffect(() => {
+        fetchChoices()
+        // return showChoices
+    })
 
-    handleChoiceSelection = (e) => {
-        this.setState({ choice: e.target.value })
-    }
-    
-    render() {
-
-        return (
-            <div className='choice-select'>
-                <div className='choiceA-selection'>
-                    <button value={this.state.choice} onChange={this.handleChoiceSelection}>
-                        {/* {choice.map((choice) => (
-                    <option value={choice.value}>{choice.label}</option>))} */}
-                    </button>
-                </div>
-                <div className='choiceB-selection'>
-                <button value={this.state.choice} onChange={this.handleChoiceSelection}>
-                        {/* {choice.map((choice) => (
-                    <option value={choice.value}>{choice.label}</option>))} */}
-                    </button>
-                </div>
+    return (
+        <div className='choice-select'>
+            <div className='choiceA-selection'>
+                <button onClick={() => setNextChoice(currentChoice + 1)}>{currentChoice.choiceA}</button>
             </div>
-        )
-    }
+            <div className='choiceB-selection'>
+                <button onClick={() => setNextChoice(currentChoice + 2)}>{currentChoice.choiceB}</button>
+            </div>
+        </div>
+    )
 }
 
 const mapStateToProps = state => {
@@ -48,8 +34,4 @@ const mapStateToProps = state => {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return { showChoices: (choice) => dispatch(showChoices(choice)) }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps) (Choice)
+export default connect(mapStateToProps, {fetchChoices, showChoices}) (Choice)
