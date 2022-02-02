@@ -34,4 +34,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {fetchChoices, showChoices}) (Choice)
+export default connect(mapStateToProps, {fetchChoices}) (Choice)

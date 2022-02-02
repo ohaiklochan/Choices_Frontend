@@ -1,6 +1,6 @@
 import React from 'react'
 
-const WelcomeContainer = () => {
+const WelcomePage = () => {
     return (
         <div>
             
@@ -18,4 +18,4 @@ const WelcomeContainer = () => {
     )
 }
 
-export default WelcomeContainer
+export default WelcomePage

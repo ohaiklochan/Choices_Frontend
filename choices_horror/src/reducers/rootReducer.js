@@ -1,5 +1,5 @@
 const rootReducer = (state = {
-        id: null,
+        id: [],
         choices: "",
         prompt: "", 
         path: "",

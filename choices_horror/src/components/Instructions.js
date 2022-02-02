@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
-import InstructionContainer from '../containers/InstructionContainer'
 import '../css/game_container.css'
 
 class Instructions extends Component {
+
     render() {
-        return(
-            <InstructionContainer />
+    return (
+        <div className='title'>
+        <div>
+            <h1>Are you sure?</h1>
+            <h4>This game is about YOU....... I'm sure you'll love it. Just choose one choice or the other and see which ending you get.</h4></div>
+            <div className='button'>
+                <button onClick={() => window.location = '/maingame'} className='start'>I guess I'll start</button></div></div>
         )
     }
 }

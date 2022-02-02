@@ -1,10 +1,14 @@
-import React, { Component } from 'react'
+import { useEffect } from 'react'
+import { connect } from 'react-redux'
 import Choice from '../components/Choice'
 import Prompt from '../components/Prompt'
+import { loadPrompts } from '../actions/gameAction'
 
-class PromptContainer extends Component {
+const PromptContainer = ({ loadPrompts }) => {
 
-    render() {
+    useEffect(() => {
+        loadPrompts()}, [loadPrompts])
+
         return (
         <div className='main-prompt'>
             <div className='current-prompt'>
@@ -12,8 +16,10 @@ class PromptContainer extends Component {
             <Choice />
             </div>
         </div>
-    )}
+    )
 }
 
-export default PromptContainer
+const mapStateToProps = (state) => ({ prompt: state.prompt })
+
+export default connect(mapStateToProps, { loadPrompts })(PromptContainer)
 

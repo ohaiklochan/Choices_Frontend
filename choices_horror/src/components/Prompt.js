@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { loadPrompts, showPrompt } from '../actions/gameAction'
+import { useParams } from 'react-router-dom'
 
 function Prompt(props) {
 
-    const [ id, setId ] = useState(0);
-    const [ currentId, setCurrentId ] = useState(0);
+    const [ id, setId ] = useState([]);
+    const [ currentId, setCurrentId ] = useState([]);
     const [ path, setPath ] = useState('')
 
+    const routeId = useParams().id
+
     useEffect(() => {
-        loadPrompts()
+        loadPrompts(routeId)
         // return showPrompt
     }, [])
 
@@ -46,4 +49,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect (mapStateToProps, {loadPrompts, showPrompt}) (Prompt)
+export default connect (mapStateToProps, {loadPrompts}) (Prompt)
