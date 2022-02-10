@@ -30,12 +30,6 @@ function Prompt(props) {
             <div className='current-prompt'>
                 <h3>{id[currentId].prompt}</h3>
             </div>
-            <div className='choiceA'>
-                <button onClick={(choiceAnswer) => handleAnswer(choiceAnswer)}>{id[currentId].choiceA}</button>
-            </div>
-            <div className='choiceB'>
-                <button onClick={(choiceAnswer) => handleAnswer(choiceAnswer)}>{id[currentId].choiceB}</button>
-            </div>
         </div>
     ) : (
         <h2>Loading...</h2>
